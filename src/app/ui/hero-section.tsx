@@ -1,22 +1,14 @@
 import Spline from "@splinetool/react-spline/next"
-import Logo from "@/app/components/logo"
-import Navigation from "@/app/ui/navigation"
 
 export default function HeroSection() {
   return (
     <section className="dark:bg-gray-800 bg-white relative overflow-hidden h-screen">
-      <header className="flex items-center pt-3 z-30 w-full">
-        <div className="container mx-auto px-6 flex items-center justify-between">
-          <Logo />
-          <Navigation />
-        </div>
-      </header>
-      <div className="bg-white dark:bg-gray-800 flex relative z-20 items-center overflow-hidden" style={{ height: 'calc(100vh - 6rem)' }}>
+      <div className="bg-white dark:bg-gray-800 flex relative z-10 items-center overflow-hidden h-full pt-20">
         <div className="container mx-auto px-6 flex items-center relative h-full py-5">
-          <div className="sm:w-2/3 lg:w-2/5 flex flex-col relative z-20">
+          <div className="lg:w-2/5 flex flex-col relative z-20 mt-16">
             <span className="w-20 h-2 bg-gray-800 dark:bg-white mb-5">
             </span>
-            <h1 className="font-bebas-neue uppercase text-6xl sm:text-8xl font-black flex flex-col leading-none dark:text-white text-gray-800">
+            <h1 className="mb-3 font-bebas-neue uppercase text-6xl sm:text-8xl font-black flex flex-col leading-none dark:text-white text-gray-800">
               Cell <span className="text-5xl sm:text-7xl">Space</span>
             </h1>
             <p className="text-sm sm:text-base text-gray-700 dark:text-white">
@@ -31,7 +23,7 @@ export default function HeroSection() {
               </a>
             </div>
           </div>
-          <div className="absolute md:relative md:w-3/5 w-full h-full left-0">
+          <div className="absolute md:relative md:w-3/5 w-full md:h-full h-3/5 sm:h-4/5 left-14 mb-36 md:mb-0">
             <Spline
               scene="/scene.splinecode"
             />
