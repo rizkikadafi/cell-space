@@ -1,4 +1,6 @@
 import Spline from "@splinetool/react-spline/next"
+import { Suspense } from 'react'
+import Loading from "@/app/loading"
 
 export default function HeroSection() {
   return (
@@ -24,9 +26,11 @@ export default function HeroSection() {
             </div>
           </div>
           <div className="absolute md:relative md:w-3/5 w-full md:h-full h-3/5 sm:h-4/5 left-14 mb-36 md:mb-0">
-            <Spline
-              scene="/scene.splinecode"
-            />
+            <Suspense fallback={<Loading />}>
+              <Spline
+                scene="/scene.splinecode"
+              />
+            </Suspense>
           </div>
         </div>
       </div>
