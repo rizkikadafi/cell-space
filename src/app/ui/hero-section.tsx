@@ -1,8 +1,21 @@
-import Spline from "@splinetool/react-spline/next"
-import { Suspense } from 'react'
-import Loading from "@/app/loading"
+"use client"
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import Loading from "@/app/loading";
+import Spline from "@splinetool/react-spline";
 
 export default function HeroSection() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setIsLoading(true);
+  }, []);
+
+  const handleLoad = () => {
+    setIsLoading(false);
+  };
+
   return (
     <section className="dark:bg-gray-800 bg-white relative overflow-hidden h-screen">
       <div className="bg-white dark:bg-gray-800 flex relative z-10 items-center overflow-hidden h-full pt-20">
@@ -17,20 +30,20 @@ export default function HeroSection() {
               Platform pembelajaran Biologi Sel yang dirancang untuk memberikan pengalaman belajar yang interaktif dan menyenangkan melalui materi dan simulasi 3D.
             </p>
             <div className="flex mt-8">
-              <a href="#" className="uppercase py-2 px-4 rounded-lg bg-blue-500 border-2 border-transparent text-white text-md mr-4 hover:bg-blue-400">
+              <Link href="/dashboard" className="uppercase py-2 px-4 rounded-lg bg-blue-500 border-2 border-transparent text-white text-md mr-4 hover:bg-blue-400">
                 Get started
-              </a>
+              </Link>
               <a href="#" className="uppercase py-2 px-4 rounded-lg bg-transparent border-2 border-blue-500 text-blue-500 dark:text-white hover:bg-blue-500 hover:text-white text-md">
                 Read more
               </a>
             </div>
           </div>
-          <div className="absolute md:relative md:w-3/5 w-full md:h-full h-3/5 sm:h-4/5 left-14 mb-36 md:mb-0">
-            <Suspense fallback={<Loading />}>
-              <Spline
-                scene="/scene.splinecode"
-              />
-            </Suspense>
+          <div className="absolute md:relative md:w-3/5 w-full md:h-full h-4/5 left-14 mb-36 md:mb-0">
+            {isLoading && <Loading />}
+            <Spline
+              scene="/scene.splinecode"
+              onLoad={handleLoad}
+            />
           </div>
         </div>
       </div>

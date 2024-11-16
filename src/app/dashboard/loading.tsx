@@ -1,5 +1,3 @@
-"use client"
-
 export default function Loading() {
   return (
     <div className="fixed z-[200] bottom-0 left-0 right-0 top-0 flex items-center justify-center border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
