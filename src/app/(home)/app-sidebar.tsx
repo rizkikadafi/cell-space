@@ -32,9 +32,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     <Sidebar {...props}>
       <SidebarHeader>
         <div className="flex justify-between items-center">
-          <a href="/">
+          <Link href="/">
             <Logo />
-          </a>
+          </Link>
           <ModeToggle />
         </div>
         <Separator />

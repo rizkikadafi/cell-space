@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { buttonVariants } from "@/components/ui/button"
-import Link from "next/link";
 import { LoadingFull } from "@/components/ui/loading";
 import Spline from "@splinetool/react-spline";
 
