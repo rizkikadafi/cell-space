@@ -1,6 +1,6 @@
 "use client"
 
-export default function Loading() {
+export function LoadingFull() {
   return (
     <div className="bg-background fixed z-[200] bottom-0 left-0 right-0 top-0 flex items-center justify-center">
       <div role="status">

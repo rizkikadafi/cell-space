@@ -10,7 +10,7 @@ body {
   :root {
     --gradient: #0d261e;
     --background: 171 97.45% 98%;
-    --foreground: 171 4.9% 0.4%;
+    --foreground: 171 4.9% 10%;
 
     --muted: 171 4.9% 91%;
     --muted-foreground: 171 2.45% 41%;
@@ -39,6 +39,18 @@ body {
     --ring: 171 49% 10%;
 
     --radius: 0.5rem;
+
+    --sidebar-background: 171 97.45% 97%;
+    --sidebar-foreground: 171 4.9% 20%;
+
+    --sidebar-primary: 171 49% 10%;
+    --sidebar-primary-foreground: 171 0.98% 91%;
+
+    --sidebar-accent: 171 46.55% 83.8%;
+    --sidebar-accent-foreground: 171 3.94% 11%;
+
+    --sidebar-border: 171 9.9% 80%;
+    --sidebar-ring: 171 9.9% 80%;
   }
 
   .dark {
@@ -72,6 +84,18 @@ body {
     --destructive-foreground: 182 5% 98%;
 
     --ring: 182 50% 60%;
+
+    --sidebar-background: 182 32.5% 10%;
+    --sidebar-foreground: 182 5% 98%;
+
+    --sidebar-primary: 182 50% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+
+    --sidebar-accent: 182 32.5% 15%;
+    --sidebar-accent-foreground: 182 5% 98%;
+
+    --sidebar-border: 182 25% 18%;
+    --sidebar-ring: 182 25% 18%;
   }
 }
 

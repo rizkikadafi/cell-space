@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { buttonVariants } from "@/components/ui/button"
 import Link from "next/link";
-import Loading from "@/app/loading";
+import { LoadingFull } from "@/components/ui/loading";
 import Spline from "@splinetool/react-spline";
 
 export default function HeroSection() {
@@ -31,16 +31,16 @@ export default function HeroSection() {
               Platform pembelajaran Biologi Sel yang dirancang untuk memberikan pengalaman belajar yang interaktif dan menyenangkan melalui materi dan simulasi 3D.
             </p>
             <div className="flex mt-8">
-              <Link href="/dashboard" className={`${buttonVariants({ variant: "default", size: "lg" })} mr-3`}>
+              <a href="/dashboard" className={`${buttonVariants({ variant: "default", size: "lg" })} mr-3`}>
                 Get started
-              </Link>
+              </a>
               <a href="#" className={buttonVariants({ variant: "outline", size: "lg" })}>
                 Read more
               </a>
             </div>
           </div>
           <div className="absolute md:relative md:w-3/5 w-full md:h-full h-4/5 left-14 mb-36 md:mb-0">
-            {isLoading && <Loading />}
+            {isLoading && <LoadingFull />}
             <Spline
               scene="/scene.splinecode"
               onLoad={handleLoad}

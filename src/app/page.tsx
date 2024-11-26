@@ -1,7 +1,7 @@
-import { Navbar } from "@/app/ui/navbar"
-import HeroSection from "@/app/ui/hero-section"
+import { Navbar } from "./navbar"
+import HeroSection from "./hero-section"
 
-export default function Home() {
+export default function LandingPage() {
   return (
     <>
       <Navbar />
