@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import {
   Card,
   CardContent,
@@ -8,7 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
-import { Button } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button"
 
 export default function Course() {
   return (
@@ -30,7 +31,9 @@ export default function Course() {
           <p>Card Content</p>
         </CardContent>
         <CardFooter>
-          <Button className="w-full">Start Learning</Button>
+          <Link href="/course/1" className={`${buttonVariants({ variant: "default", size: "lg" })} w-full`}>
+            Start Learning
+          </Link>
         </CardFooter>
       </Card>
       <Card className="rounded-md overflow-hidden">
@@ -50,7 +53,9 @@ export default function Course() {
           <p>Card Content</p>
         </CardContent>
         <CardFooter>
-          <Button className="w-full">Start Learning</Button>
+          <Link href="/course/2" className={`${buttonVariants({ variant: "default", size: "lg" })} w-full`}>
+            Start Learning
+          </Link>
         </CardFooter>
       </Card>
       <Card className="rounded-md overflow-hidden">
@@ -70,7 +75,9 @@ export default function Course() {
           <p>Card Content</p>
         </CardContent>
         <CardFooter>
-          <Button className="w-full">Start Learning</Button>
+          <Link href="/course/3" className={`${buttonVariants({ variant: "default", size: "lg" })} w-full`}>
+            Start Learning
+          </Link>
         </CardFooter>
       </Card>
     </div>
