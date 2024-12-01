@@ -1,8 +1,8 @@
+import { Suspense } from 'react'
 import Image from "next/image"
 import Link from "next/link"
 import {
   Card,
-  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
@@ -10,76 +10,38 @@ import {
 } from "@/components/ui/card"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { buttonVariants } from "@/components/ui/button"
+import prisma from "@/lib/db"
+import { CardLoading } from "@/components/ui/loading"
 
-export default function Course() {
+
+export default async function Course() {
+  const courses = await prisma.course.findMany()
+
   return (
     <div className="grid md:grid-cols-3 gap-5">
-      <Card className="rounded-md overflow-hidden">
-        <AspectRatio ratio={16 / 9}>
-          <Image
-            src="/module-thumb.png"
-            alt="Module Thumbnail"
-            fill
-            className="object-cover rounded-md"
-          />
-        </AspectRatio>
-        <CardHeader className="relative">
-          <CardTitle>Module 1</CardTitle>
-          <CardDescription>Card Description</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <p>Card Content</p>
-        </CardContent>
-        <CardFooter>
-          <Link href="/course/1" className={`${buttonVariants({ variant: "default", size: "lg" })} w-full`}>
-            Start Learning
-          </Link>
-        </CardFooter>
-      </Card>
-      <Card className="rounded-md overflow-hidden">
-        <AspectRatio ratio={16 / 9}>
-          <Image
-            src="/module-thumb.png"
-            alt="Module Thumbnail"
-            fill
-            className="object-cover rounded-md"
-          />
-        </AspectRatio>
-        <CardHeader className="relative">
-          <CardTitle>Module 2</CardTitle>
-          <CardDescription>Card Description</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <p>Card Content</p>
-        </CardContent>
-        <CardFooter>
-          <Link href="/course/2" className={`${buttonVariants({ variant: "default", size: "lg" })} w-full`}>
-            Start Learning
-          </Link>
-        </CardFooter>
-      </Card>
-      <Card className="rounded-md overflow-hidden">
-        <AspectRatio ratio={16 / 9}>
-          <Image
-            src="/module-thumb.png"
-            alt="Module Thumbnail"
-            fill
-            className="object-cover rounded-md"
-          />
-        </AspectRatio>
-        <CardHeader className="relative">
-          <CardTitle>Module 3</CardTitle>
-          <CardDescription>Card Description</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <p>Card Content</p>
-        </CardContent>
-        <CardFooter>
-          <Link href="/course/3" className={`${buttonVariants({ variant: "default", size: "lg" })} w-full`}>
-            Start Learning
-          </Link>
-        </CardFooter>
-      </Card>
+      {courses.map((course) => (
+        <Suspense fallback={<CardLoading />} key={course.id}>
+          <Card className="rounded-md overflow-hidden" key={course.id}>
+            <AspectRatio ratio={16 / 9}>
+              <Image
+                src="/module-thumb.png"
+                alt={course.title}
+                fill
+                className="object-cover rounded-md"
+              />
+            </AspectRatio>
+            <CardHeader className="relative">
+              <CardTitle>{course.title}</CardTitle>
+              <CardDescription>{course.description}</CardDescription>
+            </CardHeader>
+            <CardFooter>
+              <Link href={`/course/${course.id}`} className={`${buttonVariants({ variant: "default", size: "lg" })} w-full`}>
+                Start Learning
+              </Link>
+            </CardFooter>
+          </Card>
+        </Suspense>
+      ))}
     </div>
   )
 }
