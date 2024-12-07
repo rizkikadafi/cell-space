@@ -9,15 +9,18 @@ const choices = [
 ];
 
 export default function Quiz1Page() {
+  const correctChoice = 2;
+
   return (
     <>
       <Navbar />
       <QuizSection
         questionText="What is the answer?"
         choices={choices}
+        correctChoice={correctChoice}
         scene="/scene1.splinecode"
         initialTime={60}
-        nextPage="../quiz2"
+        nextPage="/quiz2"
       />
     </>
   );
