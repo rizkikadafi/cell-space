@@ -3,19 +3,31 @@ const prisma = new PrismaClient()
 
 const initialCourse: Prisma.CourseCreateInput[] = [
   {
-    title: 'Course 1',
-    description: 'This is the first course',
+    title: 'Pengenalan Sel',
+    description: 'Module yang membahas tentang sel',
+    chapters: {
+      create: [
+        {
+          title: 'Pengenalan Sel',
+          materials: {
+            create: [
+              {
+                title: 'Apa itu Sel?',
+                type: 'text',
+                content: 'Sel adalah unit terkecil dari makhluk hidup...',
+              },
+              {
+                title: 'Struktur Sel',
+                type: 'simulation',
+                content: '{"nucleus": "Ini adalah Nucleus", "nucleolus": "Ini adalah Nucleolus", "mitocondria": "Ini adalah Mitokondria"}',
+              },
+            ],
+          },
+        },
+      ],
+    },
   },
-  {
-    title: 'Course 2',
-    description: 'This is the second course',
-  },
-  {
-    title: 'Course 3',
-    description: 'This is the third course',
-  }
 ]
-
 async function main() {
   console.log(`Start seeding ...`)
   for (const module of initialCourse) {
