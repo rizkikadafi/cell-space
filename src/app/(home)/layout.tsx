@@ -2,6 +2,7 @@
 
 import { AppSidebar } from "./app-sidebar"
 import { Separator } from "@/components/ui/separator"
+import { UserButton } from "@clerk/nextjs"
 import {
   SidebarInset,
   SidebarProvider,
@@ -23,15 +24,20 @@ export default function HomeLayout({
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
-        <header className="flex sticky top-0 bg-background h-16 shrink-0 items-center gap-2 border-b px-4">
-          <SidebarTrigger className="-ml-1" />
-          <Separator orientation="vertical" className="mr-2 h-4" />
-          <BreadcrumbProvider>
-            <BreadcrumbFetcher segments={segments} />
-            <DynamicBreadcrumbs />
-          </BreadcrumbProvider>
+        <header className="flex sticky top-0 bg-background h-16 shrink-0 justify-between items-center border-b px-4">
+          <div className="flex items-center gap-2">
+            <SidebarTrigger className="-ml-1" />
+            <Separator orientation="vertical" className="mr-2 h-4" />
+            <BreadcrumbProvider>
+              <BreadcrumbFetcher segments={segments} />
+              <DynamicBreadcrumbs />
+            </BreadcrumbProvider>
+          </div>
+          <div>
+            <UserButton />
+          </div>
         </header>
-        <div className="py-3 px-5 relative">
+        <div className="py-3 px-5">
           {children}
         </div>
       </SidebarInset>
