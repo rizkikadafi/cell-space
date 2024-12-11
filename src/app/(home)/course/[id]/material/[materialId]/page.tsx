@@ -25,15 +25,15 @@ export default async function MaterialPage({
     },
   });
 
-  // Validasi apakah material terkait dengan courseId
   if (!material || material.chapter.courseId !== Number(courseId)) {
     return <p>Material not found or does not belong to this course.</p>;
   }
 
+
+
   return (
     <div>
-      <h1>{material.title}</h1>
-      <p>Type: {material.type}</p>
+      <h1 className="font-medium text-lg">{material.title}</h1>
       <div dangerouslySetInnerHTML={{ __html: material.content }} />
     </div>
   );
