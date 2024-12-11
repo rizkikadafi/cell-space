@@ -20,6 +20,12 @@ const initialCourse: Prisma.CourseCreateInput[] = [
                 title: 'Struktur Sel',
                 type: 'simulation',
                 content: '{"nucleus": "Ini adalah Nucleus", "nucleolus": "Ini adalah Nucleolus", "mitocondria": "Ini adalah Mitokondria"}',
+                simulation: {
+                  create: {
+                    scene: "sims1.splinecode"
+                  }
+                }
+
               },
             ],
           },
@@ -28,6 +34,7 @@ const initialCourse: Prisma.CourseCreateInput[] = [
     },
   },
 ]
+
 async function main() {
   console.log(`Start seeding ...`)
   for (const module of initialCourse) {

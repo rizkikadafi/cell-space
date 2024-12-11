@@ -19,7 +19,11 @@ export async function GET(
       where: { id: Number(materialId) },
       select: {
         content: true,
-        simulation: true, // Ambil data simulation terkait
+        simulation: {
+          select: {
+            scene: true,
+          }
+        }
       },
     });
 

@@ -38,7 +38,6 @@ async function fetchBreadcrumbData(segments: string[]): Promise<BreadcrumbItem[]
               throw new Error(`Failed to fetch /course/${courseId}/material/${segment}`);
             }
             const json = await response.json();
-            console.log(segment);
             return { segment, title: json.title || segment };
           } catch (error) {
             console.error(`Error fetching material title for /course/${courseId}/material/${segment}:`, error);
