@@ -35,6 +35,29 @@ const initialCourse: Prisma.CourseCreateInput[] = [
   },
 ]
 
+const initialQuizzes: Prisma.QuizCreateInput[] = [
+  {
+    title: "Quiz: Struktur Sel",
+    description: "Tes pemahaman tentang struktur sel",
+    questions: {
+      create: [
+        {
+          text: "Apa organel yang merupakan pusat kendali sel?",
+          type: "multipleChoice",
+          options: {
+            create: [
+              { text: "Nukleus", isCorrect: true },
+              { text: "Mitokondria", isCorrect: false },
+              { text: "Ribosom", isCorrect: false },
+              { text: "Kloroplas", isCorrect: false },
+            ],
+          },
+        },
+      ],
+    },
+  },
+];
+
 async function main() {
   console.log(`Start seeding ...`)
   for (const module of initialCourse) {
@@ -42,6 +65,12 @@ async function main() {
       data: module,
     })
     console.log(`Created course with id: ${newCourse.id}`)
+  }
+  for (const quiz of initialQuizzes) {
+    const newQuiz = await prisma.quiz.create({
+      data: quiz,
+    })
+    console.log(`Created quiz with id: ${newQuiz.id}`)
   }
   console.log(`Seeding finished.`)
 }
