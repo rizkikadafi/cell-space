@@ -62,10 +62,14 @@ export default function SimulationPage() {
       <div className="flex gap-2 box-border h-full">
         <div className="relative border-2 border-border w-3/5 h-full">
           {isLoading && <LoadingFitContent content="Loading Simulation..." />}
+
           <Spline
             scene={sceneUrl}
             onSplineMouseDown={onSplineMouseDown}
             onLoad={handleLoad}
+            style={{
+              visibility: isLoading ? "hidden" : "visible", // Sembunyikan Spline saat loading
+            }}
           />
         </div>
         <div className="w-2/5 h-full flex flex-col">
