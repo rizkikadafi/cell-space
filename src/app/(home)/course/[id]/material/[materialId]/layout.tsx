@@ -78,10 +78,10 @@ export default async function CourseLayout({
   });
 
   return (
-    <>
+    <div className="h-full">
       <DrawerMenu id={course.id} title={course.title} description={course.description} chapters={course.chapters} />
 
       {currentMaterial?.type === "simulation" ? simulation : children}
-    </>
+    </div>
   );
 }

@@ -1,6 +1,7 @@
 import prisma from "@/lib/db"
 import Link from "next/link"
 
+import { ScrollArea } from "@/components/ui/scroll-area"
 import {
   Accordion,
   AccordionContent,
@@ -40,31 +41,33 @@ export default async function Page({
   )
 
   return (
-    <div>
-      <h1 className="text-lg font-bold">{course?.title}</h1>
-      <p className="text-sm">{course?.description}</p>
+    <ScrollArea className="h-full box-border">
       <div>
-        <Accordion type="single" collapsible className="w-full">
-          {course?.chapters.map((chapter, index) => (
-            <AccordionItem key={index} value={chapter.title}>
-              <AccordionTrigger>
-                <h2 className="text-md font-semibold">{`${index + 1}. ${chapter.title}`}</h2>
-              </AccordionTrigger>
-              <AccordionContent>
-                <ul>
-                  {chapter.materials.map((material, index) => (
-                    <li key={index} className="my-2">
-                      <Link href={`/course/${course.id}/material/${material.id}`}>
-                        {material.title}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+        <h1 className="text-lg font-bold">{course?.title}</h1>
+        <p className="text-sm">{course?.description}</p>
+        <div>
+          <Accordion type="single" collapsible className="w-full">
+            {course?.chapters.map((chapter, index) => (
+              <AccordionItem key={index} value={chapter.title}>
+                <AccordionTrigger>
+                  <h2 className="text-md font-semibold">{`${index + 1}. ${chapter.title}`}</h2>
+                </AccordionTrigger>
+                <AccordionContent>
+                  <ul>
+                    {chapter.materials.map((material, index) => (
+                      <li key={index} className="my-2">
+                        <Link href={`/course/${course.id}/material/${material.id}`}>
+                          {material.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
       </div>
-    </div>
+    </ScrollArea>
   )
 }

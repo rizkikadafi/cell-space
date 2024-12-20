@@ -1,9 +1,13 @@
 import { ScrollArea } from "@/components/ui/scroll-area"
 
-export default function Dashboard() {
+export default async function QuizLayout({
+  children,
+}: {
+  children: React.ReactNode,
+}) {
   return (
     <ScrollArea className="h-full box-border">
-      <h1>Dashboard</h1>
+      {children}
     </ScrollArea>
   );
 }

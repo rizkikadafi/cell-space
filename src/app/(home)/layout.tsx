@@ -37,7 +37,7 @@ export default function HomeLayout({
             <UserButton />
           </div>
         </header>
-        <div className="py-3 px-5">
+        <div className="py-3 px-5 box-border overflow-hidden" style={{ height: `calc(100vh - 4rem)` }}>
           {children}
         </div>
       </SidebarInset>

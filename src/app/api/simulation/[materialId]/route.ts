@@ -18,6 +18,7 @@ export async function GET(
     const material = await prisma.material.findUnique({
       where: { id: Number(materialId) },
       select: {
+        title: true,
         content: true,
         simulation: {
           select: {
@@ -34,7 +35,9 @@ export async function GET(
       );
     }
 
-    return NextResponse.json(material);
+    return NextResponse.json(material, {
+      headers: { "Content-Type": "application/json" },
+    });
   } catch (error) {
     console.error("Error fetching simulation:", error);
     return NextResponse.json({ error: `Error: ${error}` }, { status: 500 });

@@ -1,4 +1,5 @@
 import prisma from "@/lib/db";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 export default async function MaterialPage({
   params,
@@ -32,10 +33,10 @@ export default async function MaterialPage({
 
 
   return (
-    <div>
+    <ScrollArea className="h-full box-border">
       <h1 className="font-medium text-lg">{material.title}</h1>
       <div dangerouslySetInnerHTML={{ __html: material.content }} />
-    </div>
+    </ScrollArea>
   );
 }
 
