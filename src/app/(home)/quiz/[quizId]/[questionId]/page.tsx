@@ -44,7 +44,6 @@ export default async function QuestionPage({
 
   return (
     <div>
-
       <QuizSection
         questionText={question.text}
         choices={question.options.map((option) => ({

@@ -1,5 +1,7 @@
 import prisma from "@/lib/db";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import MarkdownContent from "@/components/ui/react-markdown";
+import { JsonObject } from "@prisma/client/runtime/library";
 
 export default async function MaterialPage({
   params,
@@ -32,10 +34,13 @@ export default async function MaterialPage({
 
 
 
+  const contentToRender = (material.content as JsonObject).main as string;
+
   return (
-    <ScrollArea className="h-full box-border">
-      <h1 className="font-medium text-lg">{material.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: material.content }} />
+    <ScrollArea className="h-full w-full box-border">
+      <div className="max-w-none">
+        <MarkdownContent content={contentToRender} />
+      </div>
     </ScrollArea>
   );
 }

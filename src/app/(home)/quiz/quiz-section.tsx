@@ -49,7 +49,7 @@ export default function QuizSection({
       if (nextPage) {
         router.push(nextPage);
       }
-    }, 100);
+    }, 1000);
   };
 
   const handleTimerEnd = () => {
@@ -57,11 +57,20 @@ export default function QuizSection({
   };
 
   return (
-    <section className="relative overflow-hidden h-screen pt-16">
+    <section className="relative overflow-hidden h-full pt-16">
       <Timer initialTime={initialTime} onTimerEnd={handleTimerEnd} />
-      <div className="flex flex-col items-center justify-center h-full space-y-6z">
-        <div className="text-center px-4">
-          <p className="text-2xl font-semibold text-white">{questionText}</p>
+      {isCorrect !== null && (
+        <div
+          className={`absolute inset-0 flex items-center justify-center z-10 p-8`}
+        >
+          <div className={`${isCorrect ? "bg-green-400" : "bg-red-400"} text-white text-xl font-bold px-6 py-3 rounded-lg shadow-lg`}>
+            {isCorrect ? "Correct!" : "Incorrect, try again!"}
+          </div>
+        </div>
+      )}
+      <div className="flex flex-col items-center justify-center h-full space-y-6">
+        <div className="text-center px-4 pb-3">
+          <p className="text-2xl font-semibold text-foreground">{questionText}</p>
         </div>
         <Choices
           choices={choices}
@@ -77,11 +86,6 @@ export default function QuizSection({
             Submit
           </button>
         </div>
-        {isCorrect !== null && (
-          <div className={`mt-4 text-lg ${isCorrect ? "text-green-500" : "text-red-500"}`}>
-            {isCorrect ? "Correct!" : "Incorrect, try again!"}
-          </div>
-        )}
       </div>
     </section>
   );

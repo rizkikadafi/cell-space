@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Spline, { SplineEvent } from "@splinetool/react-spline";
 
+import MarkdownContent from "@/components/ui/react-markdown";
 import { usePathname } from 'next/navigation';
 import { LoadingFitContent } from "@/components/ui/loading";
 import { ScrollArea } from "@/components/ui/scroll-area"
@@ -35,7 +36,7 @@ export default function SimulationPage() {
 
         setTitle(title);
         setSceneUrl(`/3d-assets/scenes/course/${simulation.scene}`);
-        setObjectDescriptions(JSON.parse(content));
+        setObjectDescriptions(content as Record<string, string>);
       } catch (error) {
         console.error("Error fetching material data:", error);
         setDescription("Gagal memuat data simulasi.");
@@ -68,14 +69,16 @@ export default function SimulationPage() {
             onSplineMouseDown={onSplineMouseDown}
             onLoad={handleLoad}
             style={{
-              visibility: isLoading ? "hidden" : "visible", // Sembunyikan Spline saat loading
+              visibility: isLoading ? "hidden" : "visible",
             }}
           />
         </div>
         <div className="w-2/5 h-full flex flex-col">
           <h1 className="text-xl font-bold mb-3">{title}</h1>
           <ScrollArea className="h-full p-2 box-border border-2 border-border">
-            {description}
+            <div className="max-w-none">
+              <MarkdownContent content={description} />
+            </div>
           </ScrollArea>
         </div>
       </div>
