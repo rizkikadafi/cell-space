@@ -2,6 +2,19 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  async headers() {
+    return [
+      {
+        source: '/3d-assets/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'no-store',
+          }
+        ]
+      }
+    ]
+  },
   webpack(config) {
     // Grab the existing rule that handles SVG imports
     const fileLoaderRule = config.module.rules.find((rule: any) =>
