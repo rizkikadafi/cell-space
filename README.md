@@ -37,3 +37,4 @@ See `/src/app/global.css`
 
 ### Notes
 - Linter check before commit
+- Local build befor commit
