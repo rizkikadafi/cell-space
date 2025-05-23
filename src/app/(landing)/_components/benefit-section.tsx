@@ -2,7 +2,7 @@
 
 import SectionTitle from "@/components/ui/section-title";
 import Image from "next/image";
-import { Check, Brain, Lightbulb, Puzzle, Award, TrendingUp } from "lucide-react"; // Contoh ikon
+import { Brain, Lightbulb, Puzzle, Award, TrendingUp } from "lucide-react";
 
 interface BenefitItemProps {
   icon: React.ReactElement;
@@ -14,7 +14,6 @@ function BenefitItem({ icon, title, description }: BenefitItemProps) {
   return (
     <div className="flex items-start space-x-4">
       <div className="flex-shrink-0 mt-1 text-primary bg-primary/10 p-2 rounded-full">
-        {/* Memberikan background pada ikon agar lebih menonjol */}
         {icon}
       </div>
       <div>

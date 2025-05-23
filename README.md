@@ -34,3 +34,6 @@ This project use [shadcn ui](https://ui.shadcn.com/) for components.
 
 ### Themes
 See `/src/app/global.css`
+
+### Notes
+- Linter check before commit
