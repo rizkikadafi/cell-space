@@ -17,10 +17,10 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Separator } from "@/components/ui/separator"
 
 const links: { title: string; href: string }[] = [
-  { title: 'Home', href: '/dashboard' },
-  { title: 'About', href: '/about' },
-  { title: 'Service', href: '/faq' },
-  { title: 'Contact', href: '/contact' },
+  { title: 'Dashboard', href: '/dashboard' },
+  { title: 'About', href: '#about' },
+  { title: 'Service', href: '#service' },
+  { title: 'Contact', href: '#footer' },
 ];
 
 export function Navbar() {

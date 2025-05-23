@@ -19,7 +19,7 @@ export default function HeroSection() {
   return (
     <section className="relative overflow-hidden h-screen">
       <div className="flex relative z-10 items-center overflow-hidden h-full pt-20">
-        <div className="container mx-auto px-6 flex items-center relative h-full py-5">
+        <div className="flex items-center relative h-full py-5">
           <div className="lg:w-2/5 flex flex-col relative z-20 mt-16">
             <span className="w-20 h-2 bg-foreground mb-5">
             </span>
@@ -33,7 +33,7 @@ export default function HeroSection() {
               <a href="/dashboard" className={`${buttonVariants({ variant: "default", size: "lg" })} mr-3`}>
                 Get started
               </a>
-              <a href="#" className={buttonVariants({ variant: "outline", size: "lg" })}>
+              <a href="#about" className={buttonVariants({ variant: "outline", size: "lg" })}>
                 Read more
               </a>
             </div>

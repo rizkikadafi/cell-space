@@ -30,7 +30,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 This project use [shadcn ui](https://ui.shadcn.com/) for components.
 **Structure**
 - For global components (components used across all pages) put in `/src/component/ui`
-- For local components (components used for specific pages or route groups) put inside route folder or route groups folder.
+- For local components (components used for specific pages or route groups) put inside `_components` folder in route folder or route groups folder.
 
 ### Themes
 See `/src/app/global.css`

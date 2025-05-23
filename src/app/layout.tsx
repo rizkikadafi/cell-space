@@ -29,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en" suppressHydrationWarning className="min-h-screen">
+      <html lang="en" suppressHydrationWarning className="scroll-smooth">
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
         >
@@ -39,7 +39,9 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <div>
+              {children}
+            </div>
           </ThemeProvider>
         </body>
       </html>
