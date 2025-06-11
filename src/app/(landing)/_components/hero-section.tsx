@@ -1,28 +1,31 @@
-"use client"
+"use client";
 
 import { useEffect, useState } from "react";
-import { buttonVariants } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button";
 import { LoadingFull } from "@/components/ui/loading";
 import Spline from "@splinetool/react-spline";
 
 export default function HeroSection() {
   const [isLoading, setIsLoading] = useState(true);
+  const [shouldRender, setShouldRender] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true);
+    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+      requestIdleCallback(() => setShouldRender(true));
+    } else {
+      setShouldRender(true);
+    }
   }, []);
 
-  const handleLoad = () => {
-    setIsLoading(false);
-  };
+  const handleLoad = () => setIsLoading(false);
 
   return (
     <section className="relative overflow-hidden h-screen">
       <div className="flex relative z-10 items-center overflow-hidden h-full pt-20">
-        <div className="flex items-center relative h-full py-5">
+        <div className="flex items-center justify-between relative h-full py-5">
+          {/* Left Content */}
           <div className="lg:w-2/5 flex flex-col relative z-20 mt-16">
-            <span className="w-20 h-2 bg-foreground mb-5">
-            </span>
+            <span className="w-20 h-2 bg-foreground mb-5" />
             <h1 className="mb-3 font-bebas-neue uppercase text-6xl sm:text-8xl flex flex-col leading-none text-foreground">
               Cell <span className="text-5xl sm:text-7xl">Space</span>
             </h1>
@@ -38,12 +41,20 @@ export default function HeroSection() {
               </a>
             </div>
           </div>
-          <div className="absolute md:relative md:w-3/5 w-full md:h-full h-4/5 left-14 mb-36 md:mb-0">
-            {isLoading && <LoadingFull />}
-            <Spline
-              scene="/3d-assets/scenes/public/hero.splinecode"
-              onLoad={handleLoad}
-            />
+
+          {/* 3D Section */}
+          <div className="absolute md:relative md:w-3/5 w-full md:h-full h-4/5 left-10 mb-36 md:mb-0">
+            {isLoading && (
+              <>
+                <LoadingFull />
+              </>
+            )}
+            {shouldRender && (
+              <Spline
+                scene="/3d-assets/scenes/public/hero.splinecode"
+                onLoad={handleLoad}
+              />
+            )}
           </div>
         </div>
       </div>
