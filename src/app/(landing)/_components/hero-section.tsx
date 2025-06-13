@@ -45,9 +45,9 @@ export default function HeroSection() {
           {/* 3D Section */}
           <div className="absolute md:relative md:w-3/5 w-full md:h-full h-4/5 left-10 mb-36 md:mb-0">
             {isLoading && (
-              <>
+              <div className="hidden md:block">
                 <LoadingFull />
-              </>
+              </div>
             )}
             {shouldRender && (
               <Spline
